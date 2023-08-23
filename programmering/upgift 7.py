@@ -1,3 +1,4 @@
+#
 tal = int(input("Ditt tal: "))
 
 # Skapa en lista med 10 heltal enligt beskrivet mönster
@@ -9,3 +10,4 @@ for _ in range(9):
 total_sum = sum(num_list)
 
 print("Listan med heltal:", num_list)
+
