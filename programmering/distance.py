@@ -1,3 +1,5 @@
+#uppgift 1
+
 #bensin pris
 Bensinpris = 20
 #förbrukning per km.
@@ -10,7 +12,7 @@ distans = float(input("Hur långt ska du åka?"))
 användning = distans * förbrukning
 
 #räkna ut hur mycket resan kostar.
-kostnad = distans * användning
+kostnad = Bensinpris * användning
 
 #printa ut svaren.
 print("Du åkte ", distans, "km"," förbrukade ", användning, "L"," Det kostade ", kostnad, "kr")
