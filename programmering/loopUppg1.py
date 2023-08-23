@@ -1,3 +1,5 @@
+#uppgift 2
+
 i = int(input("siffran: "))
 
 while i > 0:
