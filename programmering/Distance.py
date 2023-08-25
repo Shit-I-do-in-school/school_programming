@@ -1,16 +1,16 @@
 #bensin pris
-Bensinpris = 20
+bensinPris = 20
 #förbrukning per km.
 förbrukning = 1.5
 
 #hur långt åker du?
-distans = float(input("Hur långt ska du åka?"))
+distans = float(input("Hur långt ska du åka i km? "))
 
 #räkna ut hur mycket bensin du använde under resan.
-användning = distans * förbrukning
+bränsle = distans*förbrukning
 
 #räkna ut hur mycket resan kostar.
-kostnad = distans * användning
+kostnad = distans*bensinPris
 
 #printa ut svaren.
-print("Du åkte ", distans, "km"," förbrukade ", användning, "L"," Det kostade ", kostnad, "kr")
+print(f"Du använde {bränsle} bensin och kostade {kostnad}kr")
