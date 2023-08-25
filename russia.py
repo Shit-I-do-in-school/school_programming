@@ -1,5 +1,5 @@
 import os
-from math import random
+import random
 
 
 Number = random.randint(1,10)
