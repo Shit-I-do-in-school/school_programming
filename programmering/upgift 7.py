@@ -9,5 +9,7 @@ for _ in range(9):
 # Beräkna summan av talen
 total_sum = sum(num_list)
 
-print("Listan med heltal:", num_list)
+medelvarde = sum(num_list) / len(num_list)
 
+print("Listan med heltal:", num_list)
+print("Medelvarde av listan är", medelvarde)

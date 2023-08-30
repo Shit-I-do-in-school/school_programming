@@ -15,16 +15,22 @@ while True:
 
     if I < 0 or I >= len(Cutelist):
         print("Ogiltigt index. Försök igen.")
-        continue
+
     
     O = input("Mata in det nya ordet: ")
-    Cutelist[I] = O
-    
-    svar = input("Vill du fortsätta byta ord? (ja/nej): ")
-    if svar.lower() != "ja":
+    if O == 0:
         for x in Cutelist:
             print(x)
-        break
+            print("Det här är din lista")
+            
+    else:
+        Cutelist[I] = O
+    
+        svar = input("Vill du fortsätta byta ord? (ja/nej): ")
+        if svar.lower() != "ja":
+            for x in Cutelist:
+                print(x)
+            break
     
 print("Det här är din lista")
     
