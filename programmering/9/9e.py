@@ -18,7 +18,7 @@ while True:
 
     
     O = input("Mata in det nya ordet: ")
-    #Jag hatar mitt liv spenderar nästan 2 timmar på att få pogramet att stängas av när man skriver 0 och så är allt jag behövede göra att sätta paraneser så här "0". Kommer ta livet av mig själv :)
+#Jag hatar mitt liv spenderar nästan 2 timmar på att få pogramet att stängas av när man skriver 0 och så är allt jag behövede göra att sätta paraneser så här "0". Kommer ta livet av mig själv :)
     if O == "0":
         for x in Cutelist:
             print(x)
