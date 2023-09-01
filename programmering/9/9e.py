@@ -18,14 +18,15 @@ while True:
 
     
     O = input("Mata in det nya ordet: ")
-    if O == 0:
+    #Jag hatar mitt liv spenderar nästan 2 timmar på att få pogramet att stängas av när man skriver 0 och så är allt jag behövede göra att sätta paraneser så här "0". Kommer ta livet av mig själv :)
+    if O == "0":
+        for x in Cutelist:
             print(x)
             print("Det här är din lista")
 #SLUTA DET HÄR FUCKING PROGRAMET SNÄLLA JAG ÅRKAR INTE GÖRA DET HÄR T.T
-            
-    elif O != 0:
+            break
+    elif O != "0":
         Cutelist[I] = O
-    
         svar = input("Vill du fortsätta byta ord? (ja/nej): ")
         if svar.lower() != "ja":
             for x in Cutelist:
