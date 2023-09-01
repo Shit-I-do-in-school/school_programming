@@ -19,11 +19,11 @@ while True:
     
     O = input("Mata in det nya ordet: ")
     if O == 0:
-        for x in Cutelist:
             print(x)
             print("Det här är din lista")
+#SLUTA DET HÄR FUCKING PROGRAMET SNÄLLA JAG ÅRKAR INTE GÖRA DET HÄR T.T
             
-    else:
+    elif O != 0:
         Cutelist[I] = O
     
         svar = input("Vill du fortsätta byta ord? (ja/nej): ")
