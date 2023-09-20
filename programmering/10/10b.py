@@ -1,4 +1,4 @@
-menu = ["mat1, mat2, mat3, mat4"]#orkar inte tänka på meny
+menu = ["pasta, kött, vego, etc"]#orkar inte tänka på meny
 def fun(i):
     x = int(i)
     bord = 0
