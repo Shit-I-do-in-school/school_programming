@@ -16,8 +16,9 @@ position = room["room1"].split(",")
 visited = [room["room1"]]
 choices = []
 
-while len(visited) != len(room):#i dont know
-    for item in room:
+
+def addChoices():
+    for item in room:#add available room choices to choices list
         x = room[item].split(",")
         print("p: ", position[1])
         print("x: ", x[1])
@@ -25,6 +26,7 @@ while len(visited) != len(room):#i dont know
             choices.append(room[item].split(","))
     print(choices)
 
+def removeVisited():
     for i in range(len(choices)):#remove visited rooms from available choices
         try:
             x = visited[i].split(",")
@@ -33,4 +35,8 @@ while len(visited) != len(room):#i dont know
                 choices.remove(choices[i])
         except: pass
     print(choices)
-    quit()
+
+
+while len(visited) != len(room):
+    addChoices()
+    removeVisited()
