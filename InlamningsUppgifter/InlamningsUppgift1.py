@@ -9,11 +9,11 @@ no = []
 
 while n-sum(no) > 0:#den kollar om någonting
     #fibinaci
-   nth = n1 + n2
-   n1 = n2
-   n2 = nth
+    nth = n1 + n2
+    n1 = n2
+    n2 = nth
 
-   no.append(n1)#lägg till listan
-   count += 1
+    no.append(n1)#lägg till listan
+    count += 1
 
 print("Svar: ", count)#print
