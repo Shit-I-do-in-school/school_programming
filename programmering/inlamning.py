@@ -2,7 +2,7 @@
 ord = int(input("Hur många ord? "))
 Mening = input("Mening? ")
 
-#vi stripar menigen så vi kan göra den till en lista
+#Vi tar bort dubble mellanslag och gör det till ensama mellanslag för dubble mellanslag är fult
 naglis = Mening.strip()
 
 #här gör vi listan 🤯🤯🤯🤯🤯🤯
