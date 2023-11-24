@@ -22,7 +22,9 @@ def readfile():
     
     f = open("savedNr.txt", "w")
     
-    f.write(print(0))
+    f.write("0")
+    
+    f.close()
 
 def writefile():
     f = open("savedNr.txt", "w")
@@ -32,8 +34,8 @@ skapafil()
 readfile()
 
 while 1:
-    input("Lägg till ett nytt tal till en summa (eller avsluta med a)\nSkriv talet (eller A): ")
-    if input == "a" or "A":
+    i = input("Lägg till ett nytt tal till en summa (eller avsluta med a)\nSkriv talet (eller A): ")
+    if i == "a" or "A":
         quit()
-    elif input == 
-       writefile()
+#    elif input == 
+ #      writefile()
