@@ -19,7 +19,12 @@ rooms = {
 '''''
 graph = {}
 
-def convert(rooms):
+def print_graph(graph):
+    for i in range(1,len(graph)):
+        item = str(graph["omr"+str(i)])
+        print("omr"+str(i) + ": " + item)
+
+def convert1(rooms):
     for i in range(1, len(rooms)):
         startRoomLevel = int(rooms["omr"+str(i)].split(",")[0])
         startRoom = list(rooms["omr"+str(i)].split(",")[1])
@@ -39,6 +44,31 @@ def convert(rooms):
                     print(diff)
 
 
+def convert(rooms):
+    #variable init
+    adjacentRooms = []
+    convertedCost = []
+    visitedRooms = ["omr1"]
+    for count in range(1,len(rooms)):
+        fromRoom = rooms["omr"+str(count)].split(",")
+
+        #get adjacent rooms
+        for i in rooms:
+            x = rooms[i].split(",")[1]
+            for j in x:
+                if j in fromRoom[1] and not i in visitedRooms:
+                    adjacentRooms.append(i)
+
+        #calculate cost
+        for room in adjacentRooms:
+            nextRoom = rooms[room].split(",")
+            cost = int(nextRoom[0]) - int(fromRoom[0])
+            convertedCost.append("omr"+str(count) + " " + str(cost))#try to add to graph somehow
+
+        graph["omr" + str(count)] = convertedCost
+
+    print_graph(graph)
+
 def run():
     ''''
     n = int(input("Ange N: "))
@@ -55,13 +85,17 @@ def run():
     '''
     rooms = {
         "omr1": "1,AB",
-        "omr2": "4,BC",
-        "omr3": "3,C",
-        "omr4": "10,DE"
+        "omr2": "4,DE",
+        "omr3": "1,CEF",
+        "omr4": "3,AD",
+        "omr5": "2,E",
+        "omr6": "2,D",
+        "omr7": "2,BC",
+        "omr8": "3,F",
     }
 
     for j in range(1, len(rooms)):
-        graph["omr"+str(j)] = ""
+        graph["omr"+str(j)] = {}
     print(graph)
     convert(rooms)
 
