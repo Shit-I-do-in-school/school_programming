@@ -1,3 +1,4 @@
+
 '''''
 GOAL:
 
@@ -47,25 +48,33 @@ def convert1(rooms):
 def convert(rooms):
     #variable init
     adjacentRooms = []
-    convertedCost = []
-    visitedRooms = ["omr1"]
-    for count in range(1,len(rooms)):
+    visitedRooms = []
+    for count in range(1,len(rooms)+1):
+        adjacentRooms = []
         fromRoom = rooms["omr"+str(count)].split(",")
+        visitedRooms.append("omr"+str(count))
 
         #get adjacent rooms
+        for i in range(1, len(rooms)+1-len(visitedRooms)):
+            x = rooms["omr"+str(i)].split(",")[1]# variable is --> ie. AB
+            for j in x:
+                if j in fromRoom[1] and rooms["omr"+str(i)] != rooms["omr"+str(count)]:
+                    adjacentRooms.append(i)
+
+        ''''
         for i in rooms:
             x = rooms[i].split(",")[1]
             for j in x:
-                if j in fromRoom[1] and not i in visitedRooms:
+                if j in fromRoom[1] and i not in visitedRooms:
+                    print(visitedRooms)
                     adjacentRooms.append(i)
+        '''''
 
         #calculate cost
         for room in adjacentRooms:
-            nextRoom = rooms[room].split(",")
+            nextRoom = rooms["omr"+str(room)].split(",")
             cost = int(nextRoom[0]) - int(fromRoom[0])
-            convertedCost.append("omr"+str(count) + " " + str(cost))#try to add to graph somehow
-
-        graph["omr" + str(count)] = convertedCost
+            graph["omr"+str(count)]["omr"+str(room)] = cost#add everything to graph
 
     print_graph(graph)
 
@@ -94,7 +103,7 @@ def run():
         "omr8": "3,F",
     }
 
-    for j in range(1, len(rooms)):
+    for j in range(1, len(rooms)+1):
         graph["omr"+str(j)] = {}
     print(graph)
     convert(rooms)
