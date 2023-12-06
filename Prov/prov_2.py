@@ -1,41 +1,32 @@
-import os
 
-#gör en funktion som skapar filen savedNr.txt
-def skapafil():
-    
-    #försöker skapa filen
-    try: open("savedNr.txt", "x")
-    
-    #ger error om filen finns
-    except FileExistsError: print("Filen finns redan")
-    
-    except Exception as e: print("Error: ", e)
-    #om inga error händer skapas filen och det printar ut att den är skapad
-    else: print("Filen skapats")
+#gör en funktion som sparar summa till text filen
+def spara(nummer):
+    nummer = str(nummer)
+    with open("savedNr.txt", "w") as f:
+        f.write(nummer)
+        
+#få in det senaste tallet från txt filen så vi kan skriva ut den i print("Tidigare summa = ", tidigare())      
+def tidigare():
+    with open("savedNr.txt", "r") as f:
+        z = int(f.read())
+    return z     
 
-
-def readfile():
-    #här öppnar vi filen och läser inehållet
-    f = open("savedNr.txt", "r")
-    #här printar vi ut texten som är i filen
-    print("Tidigare summa", f.read())
-    
-    f = open("savedNr.txt", "w")
-    
-    f.write("0")
-    
-    f.close()
-
-def writefile():
-    f = open("savedNr.txt", "w")
-    f.write()
-
-skapafil()
-readfile()
 
 while 1:
+    #printar ut summan som finns i txt filen
+    print("Tidigare summa = ", tidigare())
+    #tar in siffra eller bokstaven A så att vi kan kolla om vi ska addera siffrorna eller stänga av pogramet.
     i = input("Lägg till ett nytt tal till en summa (eller avsluta med a)\nSkriv talet (eller A): ")
-    if i == "a" or "A":
-        quit()
-#    elif input == 
- #      writefile()
+    #kollar så att bokstaven A är en stor bokstav. 
+    if i.lower() != "a":
+        #tästar om vi kan addera siffrorna annars går den till execpt: print("Det är ingen tal")
+        try:
+            y = int(i)
+            z = tidigare() + y 
+            spara(z)
+        # printar att det inte är en siffra om du skrev in ett tal
+        except: print("Det är ingen tal")
+        #om vi får in ett A från inputen så kör vi koden under denna kommentar
+    else:
+       print("Nu avslutar programmet!")
+       break

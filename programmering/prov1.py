@@ -2,7 +2,8 @@
 def översätt():
     #En input som tar in meningen som skas översättas
     s = input("skriv in en text som skall översättas till Rövarspråk: ")
-    
+
+    #byt ut alla vokaler
     s = s.replace('b', 'bob')
     s = s.replace('c', 'coc')
     s = s.replace('d', 'dod')
