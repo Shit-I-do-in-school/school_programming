@@ -1,3 +1,11 @@
+'''
+TODO:
+1. make a remover for last item in graph dict (remove the extra added item for looping)
+2. fix counting all rooms on same stairs
+3. convert omr1 to letters
+
+'''
+
 
 '''''
 GOAL:
@@ -26,10 +34,10 @@ def print_graph(graph):
         print("omr"+str(i) + ": " + item)
 
 def convert1(rooms):
-    for i in range(1, len(rooms)):
+    for i in range(1, len(rooms)+1):
         startRoomLevel = int(rooms["omr"+str(i)].split(",")[0])
         startRoom = list(rooms["omr"+str(i)].split(",")[1])
-        for j in range(2, len(rooms)):
+        for j in range(2, len(rooms)+2):
             try:
                 tempLevel = int(rooms["omr" + str(j)].split(",")[0])
                 tempStair = list(rooms["omr"+str(j)].split(",")[1])
@@ -48,38 +56,35 @@ def convert1(rooms):
 def convert(rooms):
     #variable init
     adjacentRooms = []
-    visitedRooms = []
+    #counter = 0
     for count in range(1,len(rooms)+1):
+        #counter += 1
+        #print("counter: ", counter)
         adjacentRooms = []
         fromRoom = rooms["omr"+str(count)].split(",")
-        visitedRooms.append("omr"+str(count))
 
         #get adjacent rooms
-        for i in range(1, len(rooms)+1-len(visitedRooms)):
-            x = rooms["omr"+str(i)].split(",")[1]# variable is --> ie. AB
-            for j in x:
-                if j in fromRoom[1] and rooms["omr"+str(i)] != rooms["omr"+str(count)]:
-                    adjacentRooms.append(i)
-
-        ''''
-        for i in rooms:
-            x = rooms[i].split(",")[1]
-            for j in x:
-                if j in fromRoom[1] and i not in visitedRooms:
-                    print(visitedRooms)
-                    adjacentRooms.append(i)
-        '''''
+        for i in range(1, len(rooms)+1):#loop for count rooms
+            x = rooms["omr"+str(i)].split(",")# variable is --> ie. AB
+            for j in x[1]:# brain damage here
+                adjacentRooms.append(i)
 
         #calculate cost
-        for room in adjacentRooms:
-            nextRoom = rooms["omr"+str(room)].split(",")
+        for level in adjacentRooms:
+            nextRoom = rooms["omr"+str(level)].split(",")
             cost = int(nextRoom[0]) - int(fromRoom[0])
-            graph["omr"+str(count)]["omr"+str(room)] = cost#add everything to graph
+            if "omr"+str(count) != "omr"+str(level):
+                graph["omr"+str(count)]["omr"+str(level)] = cost #add everything to graph
 
     print_graph(graph)
+    return graph
+
+def checkForFaults(graph):
+    for item in graph:
+        print(item)
 
 def run():
-    ''''
+    '''''
     n = int(input("Ange N: "))
     if not n >= 3 and not n <= 15:
         print("N är utanför gränsen")
@@ -91,7 +96,7 @@ def run():
         v = input(f"Område {i} våning --> ")
         t = input(f"Område {i} trappan --> ").upper()
         rooms["omr"+str(i)] = v + "," + t
-    '''
+    '''''
     rooms = {
         "omr1": "1,AB",
         "omr2": "4,DE",
@@ -101,12 +106,14 @@ def run():
         "omr6": "2,D",
         "omr7": "2,BC",
         "omr8": "3,F",
+        "omr9": "1,ZZZ",
     }
 
     for j in range(1, len(rooms)+1):
         graph["omr"+str(j)] = {}
-    print(graph)
-    convert(rooms)
+    a = convert(rooms)
+
+    checkForFaults(a)
 
 if __name__ == "__main__":
     run()
