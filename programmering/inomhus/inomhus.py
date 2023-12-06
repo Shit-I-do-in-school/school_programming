@@ -19,11 +19,4 @@ for i in range(1, N+1):
     map[str(i)+"t"]    =    input(f"område {  i  } trappa --> ")
 map = {"1v": "2", "A": "2v", "1": "B"}
 
-#posision = map["1v"], map["2v"]
-
-a1 = int(input("vad är 1 + 4? "))
-
-if a1 == 5:
-    print("nice")
-else:
-    print("OMG YOU ARE RETARDED!!!!!")
+posision = map["1v"], map["2v"]

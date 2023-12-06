@@ -1,1 +1,16 @@
-sdoigoisdnvoin
+#gör en funktion som skapar filen savedNr.txt
+def skapafil():
+    
+    #försöker skapa filen
+    try: open("savedNr.txt", "x")
+    
+    #ger error om filen finns
+    except FileExistsError: print("Filen finns redan")
+    
+    except Exception as e: print("Error: ", e)
+    #om inga error händer skapas filen och det printar ut att den är skapad
+    else: print("Filen skapats")
+
+
+
+skapafil()
