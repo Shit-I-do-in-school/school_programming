@@ -67,8 +67,9 @@ try:
     def Test3():
         
         print(" \n = \n")
-        
-        if V == 1:
+        if V == 0:
+            print(" .* \n ** \n .. ")
+        elif V == 1:
             print(" *. \n .. \n .. ")
         elif V == 2:
             print(" *. \n *. \n .. ")
@@ -86,12 +87,27 @@ try:
             print(" *. \n ** \n .. ")
         elif V == 9:
             print(" .* \n *. \n .. ")
+        elif V == 10:
+            print(" *. .* \n .. ** \n .. .. ")
+        elif V == 11:
+            print(" *. *. \n .. .. \n .. .. ")
+        elif V == 12:
+            print(" *. *. \n .. *. \n .. .. ")
+        elif V == 13:
+            print(" *. ** \n .. .. \n .. .. ")
+        elif V == 14:
+            print(" *. ** \n .. .* \n .. .. ")
+        elif V == 15:
+            print(" *. *. \n .. .* \n .. .. ")
+        elif V == 16:
+            print(" *. ** \n .. *. \n .. .. ")
+        elif V == 17:
+            print(" *. ** \n .. ** \n .. .. ")
+        elif V == 18:
+            print(" *. *. \n .. ** \n .. .. ")
 
     # om V är större en 9 så summerar vi inte tallen för vi kan inte skriva ut det i braillesiffror om det är under 10 så kör vi funktion Test3
-    if V >= 10:
-        print ("Kommer inte summer för att talet är utanför gränsen")
-        quit()
-    else:
-        Test3()
+
+    Test3()
 except Exception as e:
     print(e)
