@@ -1,3 +1,5 @@
+import time
+
 try:
     #ta in nummeret för första talet
     N = int(input("antal siffror i första talet: "))
@@ -14,7 +16,7 @@ try:
     if not M >= 1 or not M <= 9:
         print("M är utanför gränsen!")
         quit()
-
+    t1 = time.time()
     #Vi gör en klass för att prova nya saker
     class Test:
         if N == 1:
@@ -106,8 +108,10 @@ try:
         elif V == 18:
             print(" *. *. \n .. ** \n .. .. ")
 
-    # om V är större en 9 så summerar vi inte tallen för vi kan inte skriva ut det i braillesiffror om det är under 10 så kör vi funktion Test3
-
+    # kör test 3 så vi kan se vad dem två talen blir tillsammans
     Test3()
+    #väldigt onöding except men den ser kool ut
+    t2 = time.time()
+    print("time = ", t2-t1)
 except Exception as e:
-    print(e)
+    print("Det var en error :(" , e)
