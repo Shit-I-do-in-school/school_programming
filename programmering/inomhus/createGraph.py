@@ -56,10 +56,7 @@ def convert1(rooms):
 def convert(rooms):
     #variable init
     adjacentRooms = []
-    #counter = 0
     for count in range(1,len(rooms)+1):
-        #counter += 1
-        #print("counter: ", counter)
         adjacentRooms = []
         fromRoom = rooms["omr"+str(count)].split(",")
 
@@ -113,7 +110,7 @@ def run():
         graph["omr"+str(j)] = {}
     a = convert(rooms)
 
-    checkForFaults(a)
+    #checkForFaults(a)
 
 if __name__ == "__main__":
     run()
