@@ -64,17 +64,18 @@ def convert(rooms):
         for i in range(1, len(rooms)+1):#loop for count rooms
             x = rooms["omr"+str(i)].split(",")# variable is --> ie. AB
             for j in x[1]:# brain damage here
-                adjacentRooms.append(i)
+                if j in fromRoom[1]:
+                    adjacentRooms.append(i)
 
         #calculate cost
         for level in adjacentRooms:
             nextRoom = rooms["omr"+str(level)].split(",")
-            cost = int(nextRoom[0]) - int(fromRoom[0])
+            cost = abs(int(nextRoom[0]) - int(fromRoom[0]))
             if "omr"+str(count) != "omr"+str(level):
                 graph["omr"+str(count)]["omr"+str(level)] = cost #add everything to graph
 
     print_graph(graph)
-    return graph
+    #return graph
 
 def checkForFaults(graph):
     for item in graph:
@@ -103,12 +104,13 @@ def run():
         "omr6": "2,D",
         "omr7": "2,BC",
         "omr8": "3,F",
-        "omr9": "1,ZZZ",
+        "omr9": "1,ZZZ"
     }
 
     for j in range(1, len(rooms)+1):
         graph["omr"+str(j)] = {}
-    a = convert(rooms)
+    convert(rooms)
+    #a = convert(rooms)
 
     #checkForFaults(a)
 

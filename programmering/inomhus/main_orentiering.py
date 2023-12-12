@@ -3,12 +3,15 @@ from heapq import heapify, heappush, heappop
 
 def dijsktra(graph,src,dest):
     inf = sys.maxsize
-    node_data = {'A':{'cost':inf,'pred':[]},
-    'B':{'cost':inf,'pred':[]},
-    'C':{'cost':inf,'pred':[]},
-    'D':{'cost':inf,'pred':[]},
-    'E':{'cost':inf,'pred':[]},
-    'F':{'cost':inf,'pred':[]}
+    node_data = {
+    'omr1':{'cost':inf,'pred':[]},
+    'omr2':{'cost':inf,'pred':[]},
+    'omr3':{'cost':inf,'pred':[]},
+    'omr4':{'cost':inf,'pred':[]},
+    'omr5':{'cost':inf,'pred':[]},
+    'omr6':{'cost':inf,'pred':[]},
+    'omr7': {'cost':inf,'pred':[]},
+    'omr8': {'cost':inf,'pred':[]}
     }
     node_data[src]['cost'] = 0
     visited = []
@@ -32,14 +35,16 @@ def dijsktra(graph,src,dest):
 
 if __name__ == "__main__":
     graph = {
-        'A':{'B':2,'C':4},
-        'B':{'A':2,'C':3,'D':8},
-        'C':{'A':4,'B':3,'E':5,'D':2},
-        'D':{'B':8,'C':2,'E':11,'F':22},
-        'E':{'C':5,'D':11,'F':1},
-        'F':{'D':22,'E':1}
+        'omr1':{'omr4': 2, 'omr7': 1},
+        'omr2':{'omr3': 3, 'omr4': 1, 'omr5': 2, 'omr6': 2},
+        'omr3':{'omr2': 3, 'omr5': 1, 'omr7': 1, 'omr8': 2},
+        'omr4':{'omr1': 2, 'omr2': 1, 'omr6': 1},
+        'omr5':{'omr2': 2, 'omr3': 1},
+        'omr6':{'omr2': 2, 'omr4': 1},
+        'omr7':{'omr1': 1, 'omr3': 1},
+        'omr8':{'omr3': 2}
     }
 
-    source = 'A'
-    destination = 'F'
+    source = 'omr1'
+    destination = 'omr8'
     dijsktra(graph,source,destination)
