@@ -29,29 +29,9 @@ rooms = {
 graph = {}
 
 def print_graph(graph):
-    for i in range(1,len(graph)):
+    for i in range(1,len(graph)+1):
         item = str(graph["omr"+str(i)])
         print("omr"+str(i) + ": " + item)
-
-def convert1(rooms):# this one does not work
-    for i in range(1, len(rooms)+1):
-        startRoomLevel = int(rooms["omr"+str(i)].split(",")[0])
-        startRoom = list(rooms["omr"+str(i)].split(",")[1])
-        for j in range(2, len(rooms)+2):
-            try:
-                tempLevel = int(rooms["omr" + str(j)].split(",")[0])
-                tempStair = list(rooms["omr"+str(j)].split(",")[1])
-            except: print("No Rooms Left")
-            print("startRoomLevel: ", startRoomLevel)
-            print("tempLevel: ", tempLevel)
-            print("startRoom: ", startRoom)
-            print("tempStair: ", tempStair)
-            for k in tempStair:
-                if k in startRoom:
-                    diff = startRoomLevel-tempLevel
-
-                    print(diff)
-
 
 def convert(rooms):
     #variable init
@@ -75,11 +55,9 @@ def convert(rooms):
                 graph["omr"+str(count)]["omr"+str(level)] = cost #add everything to graph
 
     print_graph(graph)
-    #return graph
+    return graph
 
-def checkForFaults(graph):
-    for item in graph:
-        print(item)
+
 
 def run():
     '''''
@@ -103,16 +81,55 @@ def run():
         "omr5": "2,E",
         "omr6": "2,D",
         "omr7": "2,BC",
-        "omr8": "3,F",
-        "omr9": "1,ZZZ"
+        "omr8": "3,F"
     }
 
     for j in range(1, len(rooms)+1):
         graph["omr"+str(j)] = {}
-    convert(rooms)
-    #a = convert(rooms)
 
-    #checkForFaults(a)
+    distances = convert(rooms)
+
+    travel_cost = 0
+    min_trav = {}
+
+    # target_platform = f"omr2"
+    # for path_option in distances['omr1']:
+    #     if target_platform in path_option:
+
+    n = len(distances)
+    for platform in distances:
+        print(platform)
+        next_platform = f"omr{int(platform[-1:]) + 1}"
+        travel_path = f"{platform}-omr{int(platform[-1:]) + 1}"
+
+        if next_platform in distances[platform]:
+            min_trav[travel_path] = distances[platform][next_platform]
+
+        else:
+            for av_platform in distances[platform]:
+                if next_platform in distances[av_platform]:
+                    min_trav[travel_path] = distances[platform][av_platform] + distances[av_platform][next_platform]
+
+                else:
+                    for av2_platform in distances[av_platform]:
+                        if next_platform in distances[av2_platform]:
+
+                            travel_cost = distances[platform][av_platform] + distances[av2_platform][
+                                next_platform] + distances[av_platform][av2_platform]
+
+                            if travel_path in min_trav:
+                                if travel_cost < min_trav[travel_path]:
+                                    min_trav[travel_path] = travel_cost
+                            else:
+                                min_trav[travel_path] = travel_cost
+
+    total_travel = 0
+    for val in min_trav:
+        total_travel += min_trav[val]
+
+
+    print(min_trav)
+    print(total_travel)
 
 if __name__ == "__main__":
     run()
