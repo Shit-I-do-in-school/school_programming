@@ -33,7 +33,7 @@ def print_graph(graph):
         item = str(graph["omr"+str(i)])
         print("omr"+str(i) + ": " + item)
 
-def convert1(rooms):
+def convert1(rooms):# this one does not work
     for i in range(1, len(rooms)+1):
         startRoomLevel = int(rooms["omr"+str(i)].split(",")[0])
         startRoom = list(rooms["omr"+str(i)].split(",")[1])
