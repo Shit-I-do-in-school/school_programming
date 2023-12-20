@@ -1,6 +1,6 @@
 #spara det vi har skrivit till en fil så vi kan börja där när vi startar om pogrammet
 #använde https://pynative.com/python-write-list-to-file/ för att hitta hur jag skulle spara en lista till text fil
-def spara(i):
+def s(i):
     with open("SavedTxt.txt", "w") as fp:
         for items in i:
             fp.write(items + " ")
@@ -9,7 +9,7 @@ def spara(i):
 #insperation från https://pythonhow.com/how/read-a-file-line-by-line-into-a-list/
 def l():
     fileobj=open("SavedTxt.txt")
-    
+    #skapar en temporar lista
     line = []
     
     for lines in fileobj:
@@ -17,8 +17,9 @@ def l():
             line.append(w)
     return line
 
-#printa ut gamla listan från text filen
+#gör så att list blir den gamla listan från senaste körning
 list = l()
+#printa ut gamla listan från text filen
 print(list)
 #en loop som inte slutar köras. Om du inte skriver in bokstaven (A) 
 while 1:
@@ -40,5 +41,5 @@ while 1:
             #printa listan
             print(list)
             #sparar till listan så vi kan printa ut det igen
-            spara(list)
+            s(list)
             break

@@ -1,3 +1,4 @@
+import time
 
 braille = [
     " .* \n ** \n .. ",  # zero
@@ -23,6 +24,8 @@ braille = [
 
 try:
     a,b = int(input("Tal ett: ")), int(input("Tal två: "))
+    t1 = time.time()
+    time.sleep(0.01) 
 except:
     print("Det är inget tal :(")
     quit()
@@ -34,3 +37,6 @@ if a > 0 and a < 10 and b > 0 and b < 10:
     print(braille[b])
     print("=")
     print(braille[c])
+
+    t2 = time.time()
+    print("time = ", t2-t1)
