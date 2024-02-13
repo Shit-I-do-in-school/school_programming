@@ -1,3 +1,32 @@
+def loopthis(prev_roads=[]):
+    cost = 0
+    if prev_roads == []:
+        for road in map[platform]:
+            if next_platform in map[road]:
+                min_travel[travel_path] = map[platform][road] + map[road][next_platform]
+                prev_roads = []
+            else:
+                prev_roads += map[platform]
+                # print(prev_roads)
+                # loopthis(prev_roads=prev_roads)
+    else:
+        if len(prev_roads) < 13:
+            for previous in prev_roads:
+                for road in map[previous]:
+                    if next_platform in map[road]:
+                        # for x in prev_roads:
+                        #    cost +=
+                        min_travel[travel_path] = map[platform][road] + map[road][next_platform] + cost
+                        prev_roads = []
+                    else:
+                        prev_roads += map[platform]
+                        # print(prev_roads)
+                        # loopthis(prev_roads=prev_roads)
+
+
+# loopthis()
+
+
 for platform in map:
     next_platform = f"omr{int(platform[-1:]) + 1}"
     travel_path = f"{platform}-omr{int(platform[-1:]) + 1}"
